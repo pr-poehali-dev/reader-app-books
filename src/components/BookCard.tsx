@@ -14,7 +14,7 @@ export default function BookCard({ book, isFavorite, progress = 0, onToggleFavor
   const coverW = size === "sm" ? "w-24" : size === "lg" ? "w-44" : "w-32";
 
   return (
-    <div className="group relative flex flex-col rounded-xl overflow-hidden bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10">
+    <div className="group relative flex flex-col rounded-xl overflow-hidden bg-card border border-border card-shadow hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 hover:card-shadow-hover">
       <div className={`relative ${coverH} ${coverW === "w-32" ? "w-full" : ""} flex-shrink-0`}>
         <div className={`${book.coverClass} noise absolute inset-0 flex flex-col items-center justify-center p-4`}>
           <div className="text-white/20 text-5xl font-display font-bold select-none">
