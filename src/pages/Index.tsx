@@ -1,12 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { useReaderState } from "@/hooks/useReaderState";
+import BottomNav from "@/components/BottomNav";
+import Home from "./Home";
+import Catalog from "./Catalog";
+import Favorites from "./Favorites";
+import Profile from "./Profile";
+
+type Tab = "home" | "catalog" | "favorites" | "profile";
 
 const Index = () => {
+  const [activeTab, setActiveTab] = useState<Tab>("home");
+  const state = useReaderState();
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 color-black text-black">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">тут будет отображаться ваш проект</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <main className="overflow-y-auto">
+        {activeTab === "home" && <Home state={state} />}
+        {activeTab === "catalog" && <Catalog state={state} />}
+        {activeTab === "favorites" && <Favorites state={state} />}
+        {activeTab === "profile" && <Profile state={state} />}
+      </main>
+      <BottomNav
+        active={activeTab}
+        onChange={setActiveTab}
+        favoritesCount={state.favorites.length}
+      />
     </div>
   );
 };
